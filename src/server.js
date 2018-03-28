@@ -20,6 +20,26 @@ import schema from './data/schema';
 import assets from './assets.json'; // eslint-disable-line import/no-unresolved
 import config from './config';
 
+/*
+    logstash: {
+      type: 'logstashHTTP',
+      url: 'http://elastic:changeme@9.85.239.156:9200/_bulk',
+      application: 'log-test-log4js',
+      logType: 'application',
+      logChannel: 'node'
+    },
+    logstash: {
+      type: 'logstashHTTP',
+      url: 'http://elastic:changeme@localhost:9200/_bulk',
+      application: 'log-test-log4js',
+      logType: 'application',
+      logChannel: 'node'
+    },
+    file: {
+      type: 'file',
+      filename: 'log-test.log'
+    }
+*/
 log4js.configure({
   appenders: {
     logstash: {
