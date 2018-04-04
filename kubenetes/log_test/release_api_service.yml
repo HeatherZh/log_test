@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-api
+  namespace: ucvelocity
+  labels:
+    app: release-api
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    protocol: TCP
+    port: 3000
+    targetPort: 3000
+  selector:
+    app: release-api

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: security-api
+  namespace: ucvelocity
+  labels:
+    app: security-api
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    protocol: TCP
+    port: 3000
+    targetPort: 3000
+  selector:
+    app: security-api

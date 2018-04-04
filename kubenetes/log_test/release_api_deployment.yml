@@ -1,0 +1,29 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: release-api-v1
+  namespace: ucvelocity
+  labels:
+    app: release-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: release-api
+  template:
+    metadata:
+      labels:
+        app: release-api
+    spec:
+      containers:
+      - name: release-api
+        image: heatherzh/log-test:v1
+        env:
+          - name: "LOGGER_ES_URL"
+            value: "http://9.42.27.10:30148/_bulk"
+          - name: "LOGGER_CHANNEL"
+            value: "release-api"
+        ports:
+        - containerPort: 3000
+          name: ui
+          protocol: TCP
