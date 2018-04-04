@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: random-logger
+  namespace: ucvelocity
+spec:
+  containers:
+  - name: random-logger
+    image: chentex/random-logger
+

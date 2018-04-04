@@ -1,5 +1,6 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
 import log4js from 'log4js'
+import config from '../config'
 import { makeExecutableSchema } from 'graphql-tools';
 
 const typeDefs = `
@@ -38,7 +39,7 @@ const resolvers = {
       context,
     ) => {
       const logger = log4js.getLogger();
-      logger.addContext('requestId', '123');
+      logger.addContext('requestId', 'schema.js');
       if (infoText) {
         logger.info(infoText);
       }

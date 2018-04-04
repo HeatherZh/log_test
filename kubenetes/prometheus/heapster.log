@@ -1,0 +1,11 @@
+I0403 16:10:05.402555       1 heapster.go:72] /heapster --metric_resolution=30s --source=kubernetes.summary_api:https://kubernetes.default?kubeletHttps=true&kubeletPort=10250&insecure=true --sink=influxdb:http://monitoring-influxdb.kube-system.svc:8086 --sink=elasticsearch:http://9.85.136.111:9200?esUserName=elastic&esUserSecret=changeme&maxRetries=3
+I0403 16:10:05.402602       1 heapster.go:73] Heapster version v1.4.0
+I0403 16:10:05.402871       1 configs.go:61] Using Kubernetes client with master "https://kubernetes.default" and version v1
+I0403 16:10:05.402890       1 configs.go:62] Using kubelet port 10250
+I0403 16:10:05.418653       1 influxdb.go:278] created influxdb sink with options: host:monitoring-influxdb.kube-system.svc:8086 user:root db:k8s
+W0403 16:10:11.363427       1 driver.go:160] Failed to config ElasticSearch: Failed to create ElasticSearch client: Failed to an ElasticSearch Client: no Elasticsearch node available
+E0403 16:10:11.363472       1 factory.go:84] Failed to create sink: Failed to create ElasticSearch client: Failed to an ElasticSearch Client: no Elasticsearch node available
+I0403 16:10:11.363485       1 heapster.go:196] Starting with InfluxDB Sink
+I0403 16:10:11.363489       1 heapster.go:196] Starting with Metric Sink
+I0403 16:10:11.375557       1 heapster.go:106] Starting heapster on port 8082
+I0403 16:10:35.220814       1 influxdb.go:241] Created database "k8s" on influxDB server at "monitoring-influxdb.kube-system.svc:8086"

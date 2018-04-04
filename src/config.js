@@ -29,4 +29,8 @@ module.exports = {
     googleTrackingId: process.env.GOOGLE_TRACKING_ID, // UA-XXXXX-X
   },
 
+  logger: {
+    loggerChannel: process.env.LOGGER_CHANNEL|| 'app name',
+  },
+
 };

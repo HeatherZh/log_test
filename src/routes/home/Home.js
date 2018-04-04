@@ -1,4 +1,5 @@
 /* global ga:true */
+/* global window:true */
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 /* eslint-disable react/sort-comp */
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -60,11 +61,14 @@ class Home extends React.Component {
   }
 
   renderForm() {
-    const formTitle = 'Log test';
+    let formTitle = 'Log test';
     const infoLabel = 'Enter info log';
     const debugLabel = 'Enter debug log';
     const errorLabel = 'Enter error log';
     const submitButtonLabel = 'Log';
+    if (typeof window !== 'undefined' && window.app_name) {
+      formTitle = `Log test (${window.app_name})`;
+    }
 
     return (
       <div className={s.log_form}>

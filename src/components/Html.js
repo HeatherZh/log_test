@@ -76,6 +76,14 @@ class Html extends React.Component {
               defer
             />
           )}
+          {config.logger.loggerChannel && (
+            <script
+              dangerouslySetInnerHTML={{
+                __html:
+                `window.app_name='${config.logger.loggerChannel}';`
+              }}
+            />
+          )}
         </body>
       </html>
     );

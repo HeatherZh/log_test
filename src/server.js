@@ -21,56 +21,42 @@ import assets from './assets.json'; // eslint-disable-line import/no-unresolved
 import config from './config';
 
 /*
-    logstash: {
-      type: 'logstashHTTP',
-      url: 'http://elastic:changeme@9.85.239.156:9200/_bulk',
-      application: 'log-test-log4js',
-      logType: 'application',
-      logChannel: 'node'
-    },
-    logstash: {
-      type: 'logstashHTTP',
-      url: 'http://elastic:changeme@localhost:9200/_bulk',
-      application: 'log-test-log4js',
-      logType: 'application',
-      logChannel: 'node'
-    },
     file: {
       type: 'file',
-      filename: 'log-test.log'
+      filename: 'log-test.log',
+      maxLogSize: 10485760,
+      backups: 3,
+      compress: true
     }
 */
 log4js.configure({
   appenders: {
     logstash: {
       type: 'logstashHTTP',
-      url: 'http://localhost:9200/_bulk',
+      url: process.env.LOGGER_ES_URL,
       application: 'log-test-log4js',
       logType: 'application',
-      logChannel: 'node'
+      logChannel: process.env.LOGGER_CHANNEL
     },
     console: {
       type: 'console'
-    },
-    file: {
-      type: 'file',
-      filename: 'log-test.log'
     }
   },
   categories: {
     default: {
       appenders: [
         'logstash',
-        'console',
-        'file'
+        'console'
       ],
       level: 'debug'
     }
   }
 });
 
+console.log(`logger configured for channel ${process.env.LOGGER_CHANNEL}, posting to ${process.env.LOGGER_ES_URL}`);
+
 const logger = log4js.getLogger();
-logger.addContext('requestId', '123');
+logger.addContext('requestId', 'server.js');
 logger.debug('debug message here');
 logger.info('some interesting log message');
 logger.error('something has gone wrong');
